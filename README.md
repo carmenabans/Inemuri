@@ -34,9 +34,5 @@ Inemuri is a mobile app prototype inspired by the Japanese art of napping anywhe
 ## Screenshots
 
 
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
 
 
