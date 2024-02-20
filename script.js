@@ -112,18 +112,20 @@ function checkDistance() {
         navigator.vibrate([vibrationDuration, 100, vibrationDuration, 100, vibrationDuration]); // Vibra 3 veces según la duración calculada con dos parones de 0.1s
         document.getElementById('proximityMessage').textContent = '     ¡Has llegado a tu destino!';
         document.getElementById('proximityAlert').style.display = 'flex'; // Mostrar la alerta
+        //alert("¡Has llegado a tu destino!");
       }
       else if (distance <= 200) {
         navigator.vibrate(vibrationDuration); // Vibra según la duración calculada
         document.getElementById('proximityMessage').textContent = '     Estás cerca de tu destino';
         document.getElementById('proximityAlert').style.display = 'flex'; // Mostrar la alerta
+        //alert("Estás cerca de tu destino");
       }
     }
   }
 }
 
 
-setInterval(checkDistance, 10000); // Se actualiza el cálculo de distancia cada 10s
+setInterval(checkDistance, 5000); // Se actualiza el cálculo de distancia cada 10s
 
 
 
@@ -223,6 +225,8 @@ const modeToggleBtn = document.getElementById('modeToggle');
 const menu = document.getElementById('menu');
 const share = document.getElementById('shareButton');
 const github = document.getElementById('github');
+const search = document.getElementById('search');
+const searchResults = document.getElementById('searchResults');
 const home = document.getElementById('home');
 const work = document.getElementById('work');
 const zoomInButton = document.querySelector('.leaflet-control-zoom-in');
@@ -255,6 +259,9 @@ modeToggleBtn.addEventListener('click', function() {
     // Modificar apariencia de work
     work.style.backgroundColor = '#fefefe';
     work.style.color = 'black';
+    // Modificar apariencia de search
+    search.style.backgroundColor = '#fefefe';
+    search.style.color = 'black';
 
     // Modificar apariencia de botones zoom
     zoomInButton.style.backgroundColor = '#fefefe'; // Cambiar el color de fondo del botón de zoom in a azul
@@ -278,7 +285,7 @@ modeToggleBtn.addEventListener('click', function() {
     modeToggleBtn.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-brilliance" viewBox="0 0 16 16">
     <path d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16M1 8a7 7 0 0 0 7 7 3.5 3.5 0 1 0 0-7 3.5 3.5 0 1 1 0-7 7 7 0 0 0-7 7"/>
     </svg> `; 
-    // Modificar apariencia de share
+    // Modificar apariencia de share 
     share.style.backgroundColor = '#272829';
     share.style.color = '#fefefe';
     // Modificar apariencia de github
@@ -290,6 +297,9 @@ modeToggleBtn.addEventListener('click', function() {
     // Modificar apariencia de work
     work.style.backgroundColor = '#272829';
     work.style.color = '#fefefe';
+    // Modificar apariencia de search
+    search.style.backgroundColor = '#272829';
+    search.style.color = '#fefefe';
     // Modificar apariencia de botones zoom
     zoomInButton.style.backgroundColor = '#272829'; // Cambiar el color de fondo del botón de zoom in a azul
     zoomInButton.style.color = '#fefefe'; // Cambiar el color del texto del botón de zoom in a blanco
@@ -318,10 +328,14 @@ openfav.addEventListener('click', function() {
     if (favVisible) {
         work.style.visibility = 'hidden';
         home.style.visibility = 'hidden';
+        search.style.visibility = 'hidden';
+        searchResults.style.visibility = 'hidden';
         favVisible = false;
     } else {
         work.style.visibility = 'visible'; 
         home.style.visibility = 'visible';
+        search.style.visibility = 'visible';
+        searchResults.style.visibility = 'visible';
         favVisible = true;
     }
 });
@@ -402,3 +416,153 @@ else {
 }
 });
 
+
+
+//  --------------- FUNCIONALIDAD 11. BUSCADOR DE UBICACIONES  ---------------
+
+// Seleccionar elementos del DOM
+var searchButton = document.getElementById('search');
+var searchResults2 = document.getElementById('searchResults2');
+var searchResultsOps = document.getElementById('searchResultsOps');
+
+// Agregar evento de clic al botón de búsqueda para mostrar u ocultar el cuadro de búsqueda
+searchButton.addEventListener('click', function() {
+    // Cambiar la visibilidad del cuadro de búsqueda
+    if (searchResults.style.display === 'block') {
+        searchResults.style.display = 'none'; // Ocultar cuadro de búsqueda
+    } else {
+        searchResults.style.display = 'block'; // Mostrar cuadro de búsqueda
+    }
+});
+
+// Agregar evento de entrada al input de búsqueda
+searchResults2.addEventListener('input', function() {
+    var searchText = searchResults2.value.trim(); // Obtener el texto ingresado en el input de búsqueda sin espacios al principio y al final
+
+    // Limpiar el contenido anterior del contenedor de opciones
+    searchResultsOps.innerHTML = '';
+
+    // Verificar si hay texto ingresado en el input de búsqueda
+    if (searchText !== '') {
+        // Realizar una solicitud a la API de OpenMap para buscar lugares que coincidan con el texto ingresado
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchText)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Iterar sobre los resultados y crear opciones para cada lugar encontrado
+                data.forEach(place => {
+                    var option = document.createElement('div');
+                    option.textContent = place.display_name;
+                    option.classList.add('option');
+
+                    // Agregar evento de clic a cada opción para manejar la selección
+                    option.addEventListener('click', function() {
+                        searchResults2.value = option.textContent; // Establecer el valor del input de búsqueda como el texto seleccionado
+                        searchResultsOps.innerHTML = ''; // Limpiar las opciones después de seleccionar una
+                        
+                        // Realizar una solicitud de geocodificación inversa para obtener las coordenadas del lugar seleccionado
+                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(option.textContent)}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                // Verificar si se encontraron resultados
+                                if (data && data.length > 0) {
+                                    // Obtener las coordenadas de latitud y longitud del primer resultado
+                                    var lat = parseFloat(data[0].lat);
+                                    var lon = parseFloat(data[0].lng);
+                                    
+                                    // Llamar a la función setDestination con las coordenadas obtenidas
+                                    setDestination({ lat: lat, lng: lng });
+                                    
+                                    // Obtener la dirección del destino seleccionado con la API de geocodificación inversa de OpenStreetMap Nominatim
+                                    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            const address = data.display_name;
+                                            document.getElementById('destination').textContent = "Dirección de destino: " + address;
+                                        })
+                                        .catch(error => console.error('Error al obtener la dirección del destino:', error));
+                                } else {
+                                    console.error('No se encontraron resultados para la dirección:', option.textContent);
+                                }
+                            })
+                            .catch(error => console.error('Error al buscar la dirección:', error));
+                    });
+
+                    // Agregar la opción al contenedor de opciones
+                    searchResultsOps.appendChild(option);
+                });
+            })
+            .catch(error => {
+                console.error('Error al buscar lugares:', error);
+            });
+    }
+});
+
+// Agregar evento de clic al contenedor de opciones
+searchResultsOps.addEventListener('click', function(event) {
+  var clickedElement = event.target;
+  if (clickedElement.tagName === 'DIV') {
+      var selectedPlace = clickedElement.textContent;
+      
+      // Realizar una solicitud de geocodificación inversa para obtener las coordenadas del lugar seleccionado
+      fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(selectedPlace)}`)
+          .then(response => response.json())
+          .then(data => {
+              // Verificar si se encontraron resultados
+              if (data && data.length > 0) {
+                  // Obtener las coordenadas de latitud y longitud del primer resultado
+                  var lat = parseFloat(data[0].lat);
+                  var lng = parseFloat(data[0].lon); // Corregir aquí
+                  
+                  // Llamar a la función setDestination con las coordenadas obtenidas
+                  setDestination({ lat: lat, lng: lng });
+                  
+                  // Obtener la dirección del destino seleccionado con la API de geocodificación inversa de OpenStreetMap Nominatim
+                  fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+                      .then(response => response.json())
+                      .then(data => {
+                          const address = data.display_name;
+                          document.getElementById('destination').textContent = "Dirección de destino: " + address;
+                      })
+                      .catch(error => console.error('Error al obtener la dirección del destino:', error));
+              } else {
+                  console.error('No se encontraron resultados para la dirección:', selectedPlace);
+              }
+          })
+          .catch(error => console.error('Error al buscar la dirección:', error));
+  }
+});
+
+
+// Agregar evento de teclado al input de búsqueda
+searchResults2.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+        var selectedPlace = searchResults2.value;
+        
+        // Realizar una solicitud de geocodificación inversa para obtener las coordenadas del lugar seleccionado
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(selectedPlace)}`)
+            .then(response => response.json())
+            .then(data => {
+                // Verificar si se encontraron resultados
+                if (data && data.length > 0) {
+                    // Obtener las coordenadas de latitud y longitud del primer resultado
+                    var lat = parseFloat(data[0].lat);
+                    var lng = parseFloat(data[0].lon);
+                    
+                    // Llamar a la función setDestination con las coordenadas obtenidas
+                    setDestination({ lat: lat, lng: lng });
+                    
+                    // Obtener la dirección del destino seleccionado con la API de geocodificación inversa de OpenStreetMap Nominatim
+                    fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`)
+                        .then(response => response.json())
+                        .then(data => {
+                            const address = data.display_name;
+                            document.getElementById('destination').textContent = "Dirección de destino: " + address;
+                        })
+                        .catch(error => console.error('Error al obtener la dirección del destino:', error));
+                } else {
+                    console.error('No se encontraron resultados para la dirección:', selectedPlace);
+                }
+            })
+            .catch(error => console.error('Error al buscar la dirección:', error));
+    }
+});

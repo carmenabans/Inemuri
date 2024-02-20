@@ -51,6 +51,16 @@
   
   <!-- Lugares favoritos -->
   <div id="fav">
+    <button class="place" id="search">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+      </svg>
+    </button>
+    <div id="searchResults">
+      <input id="searchResults2" placeholder="Buscar Dirección">
+      <div id="searchResultsOps">
+      </div>
+    </div>
     <div class="place" id="home">
       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
         <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z"/>
@@ -88,11 +98,12 @@
   </div>
   
   <!-- Alerta de proximidad -->
+
   <div id="proximityAlert">
-    <pre id="proximityMessage">     Mensaje</pre>
-    <button id="closeProximityAlert">X</button>
+    <pre id="proximityMessage">Mensaje</pre>
+    <button id="closeProximityAlert">OK</button>
   </div>
-  
+
 
   <!-- Archivo de scripts -->
   <script src="script.js"></script>
