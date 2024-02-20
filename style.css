@@ -1,0 +1,164 @@
+/* Configuración de la fuente para todo el documento */
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+/* Estilos para el cuerpo de la página */
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+/* Asegurarse de que el HTML y el cuerpo ocupen el 100% del viewport */
+html, body {
+    height: 100%;
+}
+
+/* Estilos para el mapa */
+#map {
+    height: 100%;
+}
+
+/* Estilos para el menú */
+#menu {
+    position: fixed; 
+    background-color: #fefefe; 
+    bottom: 10px; 
+    left: 20px; 
+    right: 20px; 
+    height: 150px; 
+    z-index: 1000; 
+    padding: 10px; 
+    text-align: center; /* Alinear texto al centro */
+    align-content: center; /* Centrar contenido verticalmente */
+    align-items: center; /* Centrar elementos secundarios verticalmente */
+    border-radius: 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra */
+    font-size: x-small; 
+}
+
+/* Botón para abrir favoritos */
+#openfav {
+    position: absolute; 
+    right: 10px; 
+    top: 10px; 
+}
+
+/* Botón para abrir opciones */
+#openop {
+    position: absolute; 
+    left: 10px; 
+    top: 10px; 
+}
+
+/* Estilos para los elementos op y place */
+.op, .place {
+    background-color: #fefefe; 
+    margin: 5px; 
+    transform: translate(-50%, -50%); /* Centrar elemento */
+    border-radius: 20px; 
+    width: 40px; /* Ancho fijo */
+    height: 40px; /* Altura fija */
+    display: flex; /* Habilitar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+}
+
+/* Estilos para la sección de favoritos */
+#fav {
+    display: flex; /* Habilitar flexbox */
+    flex-direction: column; /* Establecer dirección de apilamiento vertical */
+    position: fixed; 
+    width: 40px;
+    bottom: 170px; 
+    right: 10px; 
+    z-index: 500; 
+}
+
+/* Estilos para la sección de opciones */
+#options {
+    display: flex; /* Habilitar flexbox */
+    flex-direction: column; /* Establecer dirección de apilamiento vertical */
+    position: fixed; 
+    width: 40px; 
+    bottom: 170px; 
+    left: 30px; 
+    z-index: 500; 
+}
+
+/* Estilos de botones share y github */
+#shareButton, #github {
+    border: #fefefe;
+    color: black;
+}
+
+/* Estilos boton noAlarms */
+#noAlarms {
+    position: fixed; 
+    right: 30px;
+    bottom: 20px;
+    color: red;
+}
+
+
+/* Estilos para la sección de salida y destino */
+#departure, #destination {
+    margin-left: 7%; 
+    position: relative; 
+    text-align: left; 
+    background-color: #f1f4f7; 
+    border-radius: 10px; 
+    width: 80%; 
+    margin-bottom: 15px; 
+    color: gray; 
+    padding: 15px; 
+    overflow-x: auto; /* Desplazamiento horizontal si el contenido es demasiado ancho */
+    white-space: nowrap; /* Evitar que el texto se divida en múltiples líneas */
+    max-height: 100px; 
+}
+
+/* Estilos para el botón de cerrar alerta de proximidad */
+#closeProximityAlert {
+    position: fixed; 
+    top: 31px; 
+    right: 40px; 
+    z-index: 40000000; 
+    border-radius: 20px; 
+    background-color: #fefefe; 
+    border-color: #fefefe; 
+    color: red;
+    font-weight:900;
+}
+  
+/* Estilos para la alerta de proximidad */
+#proximityAlert {
+    background-color: red; 
+    display: none;
+    color: #fefefe; 
+    position: fixed; 
+    z-index: 300000; 
+    top: 2%; 
+    left: 60px; 
+    right: 20px; 
+    border-radius: 20px; 
+    overflow: auto; /* Desbordamiento con barra de desplazamiento */ 
+    /*display: none; /* Ocultar inicialmente */
+    height: 96%;
+    font-weight: 500; 
+    text-align: center;
+    justify-content: center;
+    align-items:center;
+    align-content: center;
+    font-size:x-large;
+}
+
+button {
+    border-color: #272829;
+    background-color: #fefefe;
+    border-radius: 20px;
+    margin: 2px;
+    margin-top: 10px;
+    font-size: x-small;
+}
+
