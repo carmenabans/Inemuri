@@ -33,7 +33,11 @@ Inemuri is a mobile app prototype inspired by the Japanese art of napping anywhe
 4. Enjoy your nap without worrying about missing your stop.
 
 ## Screenshots
+<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 43 01" src="https://github.com/carmenabans/Inemuri/assets/112978307/9cf12762-a879-4697-b595-900ceca3c273">
+<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 43 42" src="https://github.com/carmenabans/Inemuri/assets/112978307/a67e597e-6cc7-43fa-a34e-86dfbca03619">
+<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 43 59" src="https://github.com/carmenabans/Inemuri/assets/112978307/bc4ddfb8-d64e-4239-a7c5-17eda58176eb">
+<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 45 22" src="https://github.com/carmenabans/Inemuri/assets/112978307/0a7a98c3-9329-4165-b73c-0223b784dab0">
 
-<img width="318" alt="Captura de pantalla 2024-02-20 a las 15 55 27" src="https://github.com/carmenabans/Inemuri/assets/112978307/8c28862d-dbfc-4da7-b639-026b0a34fb80">
-<img width="315" alt="Captura de pantalla 2024-02-20 a las 15 54 57" src="https://github.com/carmenabans/Inemuri/assets/112978307/f3bf4813-75a9-439b-b3db-d97b6f64e04a">
+
+
 
