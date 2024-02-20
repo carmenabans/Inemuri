@@ -11,15 +11,16 @@ Inemuri is a mobile app prototype inspired by the Japanese art of napping anywhe
 ## Functionalities Added
 
 - **Favorite Locations**: Users can save their home and work locations as favorite destinations for easy access.
-- **Current Location Tracking**: The app tracks the user's current location and provides directions to the selected destination.
+- **Current Location Tracking**: The app tracks the user's current location.
 - **Proximity Alerts**: Alerts users when they are nearing their destination.
 - **Zoom Control**: Allows users to adjust the map's zoom level for better visibility.
 - **Dark Mode Support**: Provides an option to toggle between light and dark modes for better viewing in different environments.
 - **Sharing Location**: Enables users to share their current location with others.
+- **Center Options**: If you click any direction box the map view will be set for that.
 
 ## Technology Stack
 
-- **Leaflet**: Used for map visualization.
+- **[Leaflet]([url](https://leafletjs.com))**: Used for map visualization.
 - **Geolocation API**: Provides GPS access for proximity alerts.
 - **Vibration API**: Offers haptic feedback for wake-up notifications.
 - **JavaScript**: Core logic implementation.
