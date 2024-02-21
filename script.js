@@ -7,8 +7,7 @@ var map = L.map('map').setView([40.544, -4.012], currentZoom); // Variable para 
 var circle; // Variable para el marcador de destino
 var trail; // Variable para el marcador de ubicación
 var noAlarmsMode = false; // Variable de Modo sin Alarmas (Alarmas activadas por defecto)
-const canVibrate = window.navigator.vibrate;
-if (canVibrate) window.navigator.vibrate(100);
+
 
 // OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -74,7 +73,7 @@ function onGeolocationSuccess(position) {
 
   // Se coloca el marcador en el destino
   userLocationMarker = L.marker([userLat, userLng]).addTo(map).bindPopup(`<b>Estas aquí:</b><br>Latitud: ${userLat}<br>Longitud: ${userLng}`).openPopup(); // Añadimos marker con popup con coordenadas
-  trail = L.circle([userLat, userLng], {radius: 50}).addTo(map); // No se quita el marcador circle para que se vea el trayecto realizado por el usuario
+  trail = L.circle([userLat, userLng], {radius: 50, fillOpacity: 1}).addTo(map); // No se quita el marcador circle para que se vea el trayecto realizado por el usuario segun se mueva
   map.setView([userLat, userLng], currentZoom);
   
   // Obtener la dirección del destino seleccionado con la API de geocodificación inversa de OpenStreetMap Nominatim
@@ -125,7 +124,7 @@ function checkDistance() {
 }
 
 
-setInterval(checkDistance, 5000); // Se actualiza el cálculo de distancia cada 10s
+setInterval(checkDistance, 1000); // Se actualiza el cálculo de distancia cada 5s
 
 
 
@@ -163,20 +162,20 @@ document.getElementById('closeProximityAlert').addEventListener('click', functio
   navigator.vibrate(0); // Parar el patron de vibración
 });
 
-    document.getElementById('noAlarms').addEventListener('click', function() {
-      // Cambiar el contenido del div según el estado actual de noAlarmsMode
-      if (noAlarmsMode) {
-          this.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
-              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
-          </svg>`;
-      } else {
-          this.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-slash-fill" viewBox="0 0 16 16">
-              <path d="M5.164 14H15c-1.5-1-2-5.902-2-7q0-.396-.06-.776zm6.288-10.617A5 5 0 0 0 8.995 2.1a1 1 0 1 0-1.99 0A5 5 0 0 0 3 7c0 .898-.335 4.342-1.278 6.113zM10 15a2 2 0 1 1-4 0zm-9.375.625a.53.53 0 0 0 .75.75l14.75-14.75a.53.53 0 0 0-.75-.75z"/>
-          </svg>`;
-      }
-      // Cambiar el estado de noAlarmsMode al hacer clic en el div
-      noAlarmsMode = !noAlarmsMode;
-    });
+document.getElementById('noAlarms').addEventListener('click', function() {
+  // Cambiar el contenido del div según el estado actual de noAlarmsMode
+  if (noAlarmsMode) {
+      this.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2m.995-14.901a1 1 0 1 0-1.99 0A5 5 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901"/>
+      </svg>`;
+  } else {
+      this.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-slash-fill" viewBox="0 0 16 16">
+          <path d="M5.164 14H15c-1.5-1-2-5.902-2-7q0-.396-.06-.776zm6.288-10.617A5 5 0 0 0 8.995 2.1a1 1 0 1 0-1.99 0A5 5 0 0 0 3 7c0 .898-.335 4.342-1.278 6.113zM10 15a2 2 0 1 1-4 0zm-9.375.625a.53.53 0 0 0 .75.75l14.75-14.75a.53.53 0 0 0-.75-.75z"/>
+      </svg>`;
+  }
+  // Cambiar el estado de noAlarmsMode al hacer clic en el div
+  noAlarmsMode = !noAlarmsMode;
+});
 
 
 //  --------------- FUNCIONALIDAD 7: BOTON COMPARTIR ---------------
