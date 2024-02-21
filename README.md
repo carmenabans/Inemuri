@@ -33,10 +33,16 @@ Inemuri is a mobile app prototype inspired by the Japanese art of napping anywhe
 4. Enjoy your nap without worrying about missing your stop.
 
 ## Screenshots
-<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 43 01" src="https://github.com/carmenabans/Inemuri/assets/112978307/9cf12762-a879-4697-b595-900ceca3c273">
-<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 43 42" src="https://github.com/carmenabans/Inemuri/assets/112978307/a67e597e-6cc7-43fa-a34e-86dfbca03619">
-<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 43 59" src="https://github.com/carmenabans/Inemuri/assets/112978307/bc4ddfb8-d64e-4239-a7c5-17eda58176eb">
-<img width="340" alt="Captura de pantalla 2024-02-20 a las 22 45 22" src="https://github.com/carmenabans/Inemuri/assets/112978307/0a7a98c3-9329-4165-b73c-0223b784dab0">
+
+<img width="340" alt="Captura de pantalla 2024-02-21 a las 16 37 35" src="https://github.com/carmenabans/Inemuri/assets/112978307/331206f9-ad63-4723-b9c0-13d47e52155b">
+<img width="340" alt="Captura de pantalla 2024-02-21 a las 16 41 11" src="https://github.com/carmenabans/Inemuri/assets/112978307/03fa1c3c-7a22-4492-9fe3-f927fb7989c0">
+<img width="340" alt="Captura de pantalla 2024-02-21 a las 16 41 27" src="https://github.com/carmenabans/Inemuri/assets/112978307/106bd1d4-355c-4f49-b478-14612212d562">
+<img width="340" alt="Captura de pantalla 2024-02-21 a las 16 42 59" src="https://github.com/carmenabans/Inemuri/assets/112978307/2621170e-a918-46a1-85dd-9bc767927b2e">
+<img width="340" alt="Captura de pantalla 2024-02-21 a las 16 43 23" src="https://github.com/carmenabans/Inemuri/assets/112978307/7c2fba1b-55c8-42ef-a076-7c2d9c5648a3">
+<img width="340" alt="Captura de pantalla 2024-02-21 a las 16 45 27" src="https://github.com/carmenabans/Inemuri/assets/112978307/a4672b8d-a0cc-4104-a9ce-eae607f3ea0d">
+<img width="340" alt="Captura de pantalla 2024-02-21 a las 16 45 46" src="https://github.com/carmenabans/Inemuri/assets/112978307/df97a84c-4fb4-4903-9834-733b115a4036">
+
+
 
 
 
